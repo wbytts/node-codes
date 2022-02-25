@@ -1,22 +1,20 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Req } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Request } from 'express';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  // @Get，接收GET请求
   @Get()
   getHello(): string {
     return this.appService.getHello();
   }
 
-  @Get('/test')
-  getTest(): string {
-    return 'test test test 123';
-  }
-
-  @Post('/test_post')
-  post01(): string {
-    return 'this is a post'
+  // @Req
+  @Get('/testReq')
+  testReq(@Req() request: Request): string {
+    return 'test req'
   }
 }
