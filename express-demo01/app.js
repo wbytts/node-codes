@@ -14,6 +14,7 @@ const fs = require('fs')
 // res：响应对象
 app.get('/', (请求对象, 响应对象) => {
     // 发送 Hello World 到响应对象中
+    响应对象.setHeader("Access-Control-Allow-Origin", "*");
     响应对象.send('Hello World!')
 })
 
